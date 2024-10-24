@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct Splash: View {
+    
+    @State var isActive = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if isActive{
+                Onboarding()
+            } else {
+                Text("NIKE")
+                    .font(.largeTitle.bold())
+            }
+
+        }
+        .onAppear(){
+            // We move to onboarding screen after 2.5 secs
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                isActive = true
+            }
+        }
     }
 }
 
